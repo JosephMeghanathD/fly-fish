@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react'; // Import useEffect, useRef
+import React, { useState, useEffect, useRef } from 'react';
 import ProductCard from '../components/ProductCard';
-import '../components/Products.css'; // Shared styles for product page layout
+import '../components/Products.css';
 
-// Updated product data using picsum for images (data remains the same)
+// Product data (apparelProducts array remains the same)
 const apparelProducts = [
     { id: 'apparel-001', image: 'https://picsum.photos/seed/apparel-001/300/300', title: 'Organic Cotton Fish Tee', price: '1200.00', discountPrice: '999.00', description: 'Comfortable fit tee made from 100% GOTS certified organic cotton.', createdBy: 'FlyFish Designs', tags: ['T-Shirt', 'Organic Cotton', 'Casual'], },
     { id: 'apparel-002', image: 'https://picsum.photos/seed/apparel-002/300/300', title: 'Forest Print Hoodie', price: '2500.00', discountPrice: null, description: 'Warm pullover hoodie with a serene forest print, made with recycled polyester blend.', createdBy: 'Nature Threads', tags: ['Hoodie', 'Recycled', 'Outerwear'], },
@@ -12,11 +12,12 @@ const apparelProducts = [
     { id: 'apparel-006', image: 'https://picsum.photos/seed/apparel-006/300/300', title: 'Recycled Material Jacket', price: '3500.00', discountPrice: '3199.00', description: 'Lightweight, packable jacket made from 100% recycled materials. Water-resistant finish.', createdBy: 'Sustainable Style Co.', tags: ['Jacket', 'Recycled', 'Outerwear', 'Water-Resistant'], }
 ];
 
+
 function Apparel() {
   const [showInfo, setShowInfo] = useState(false);
-  const productListRef = useRef(null); // Ref for the list container
+  const productListRef = useRef(null);
 
-  // --- Animation Logic (Same as Terrariums.js) ---
+  // --- Animation Logic ---
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -27,30 +28,25 @@ function Apparel() {
           }
         });
       },
-      {
-        threshold: 0.1,
-      }
+      { threshold: 0.1, }
     );
 
     const currentProductList = productListRef.current;
+    let cards = [];
     if (currentProductList) {
-        const cards = currentProductList.querySelectorAll('.product-card-animation-target');
+        cards = currentProductList.querySelectorAll('.product-card-animation-target');
         cards.forEach((card) => observer.observe(card));
     }
 
     return () => {
-        if (currentProductList) {
-            const cards = currentProductList.querySelectorAll('.product-card-animation-target');
-            cards.forEach((card) => {
-              // Check if observer is still tracking before unobserving
-              if (observer && observer.takeRecords().find(record => record.target === card)) {
-                 observer.unobserve(card);
-              }
-            });
-        }
+        cards.forEach((card) => {
+            if (observer) {
+               observer.unobserve(card);
+            }
+        });
     };
-  }, [apparelProducts]); // Dependency on products array
-  // --- End Animation Logic ---
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Empty dependency array
 
   const handleToggleInfo = () => {
     setShowInfo(prevShowInfo => !prevShowInfo);
@@ -60,7 +56,6 @@ function Apparel() {
 
   return (
     <main className="product-page-container" aria-labelledby="page-title">
-      {/* Apply animation class to header */}
       <header className="product-page-header animate-slide-down">
         <div className="header-content">
            <h1 id="page-title">Sustainable Apparel</h1>
@@ -73,46 +68,36 @@ function Apparel() {
             aria-controls="page-info-content"
         >
            <span>{showInfo ? 'Hide Info' : 'More Info'}</span>
-           <img
-             src={process.env.PUBLIC_URL + '/logo/logo.png'}
-             alt=""
-             aria-hidden="true"
-             className={`info-toggle-logo ${showInfo ? 'expanded' : ''}`}
-           />
+           <img src={process.env.PUBLIC_URL + '/logo/logo.png'} alt="" aria-hidden="true" className={`info-toggle-logo ${showInfo ? 'expanded' : ''}`} />
         </button>
       </header>
 
-      {/* Use transition classes for info section */}
-      <section
+      {/* Changed <section> to <div> and removed role="region" */}
+      <div
         id="page-info-content"
         className={`page-info-message ${showInfo ? 'expanded' : 'collapsed'}`}
-        role="region"
-        aria-live="polite"
+        // role="region" -- Removed
+        aria-live="polite" // Keep aria-live for screen reader announcements
         aria-hidden={!showInfo}
       >
         <div className="page-info-content-inner">
            <p>{pageDescription}</p>
         </div>
-      </section>
+      </div>
+      {/* End Change */}
 
-      {/* Pass ref to product list container */}
       <section className="product-grid-container" aria-label="Apparel Products">
         <div ref={productListRef} className="product-list">
           {apparelProducts.map((product, index) => (
-            // Add wrapper div for animation target and stagger delay
-            <div
-              key={product.id}
-              className="product-card-animation-target"
-              style={{ '--stagger-delay': `${index * 0.08}s` }}
-            >
+            <div key={product.id} className="product-card-animation-target" style={{ '--stagger-delay': `${index * 0.08}s` }} >
               <ProductCard
-                id={product.id}
-                image={product.image}
-                title={product.title}
-                description={product.description}
-                price={product.price}
-                discountPrice={product.discountPrice}
-                createdBy={product.createdBy}
+                  id={product.id}
+                  image={product.image}
+                  title={product.title}
+                  description={product.description}
+                  price={product.price}
+                  discountPrice={product.discountPrice}
+                  createdBy={product.createdBy}
               />
             </div>
           ))}

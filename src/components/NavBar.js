@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom'; // Use NavLink, removed unused Link
 import './NavBar.css';
 import ProductCard from './ProductCard';
 
@@ -12,16 +12,15 @@ import { TbHomeEco } from "react-icons/tb";
 
 // Original discount products data
 const originalDiscountProducts = [
-    { id: 'discount-terra-001', image: 'https://picsum.photos/seed/discount-terra-001/200/200', title: 'Moss Terrarium', price: '3500.00', discountPrice: '2999.00', description: 'Lush moss & ferns.' }, // Added short desc
-    { id: 'discount-apparel-001', image: 'https://picsum.photos/seed/discount-apparel-001/200/200', title: 'Organic Fish Tee', price: '1200.00', discountPrice: '999.00', description: '100% Organic Cotton.' },
-    { id: 'discount-fig-001', image: 'https://picsum.photos/seed/discount-fig-001/200/200', title: 'Meditating Frog', price: '1500.00', discountPrice: '1299.00', description: 'Peaceful resin frog.' },
-    { id: 'discount-paint-001', image: 'https://picsum.photos/seed/discount-paint-001/200/200', title: 'Leaf Study', price: '4500.00', discountPrice: '3999.00', description: 'Detailed acrylic leaf.' }
+    { id: 'discount-terra-001', image: 'https://picsum.photos/seed/discount-terra-001/150/150', title: 'Moss Terrarium', price: '3500.00', discountPrice: '2999.00', description: 'Lush moss & ferns.' }, // Added short desc
+    { id: 'discount-apparel-001', image: 'https://picsum.photos/seed/discount-apparel-001/150/150', title: 'Organic Fish Tee', price: '1200.00', discountPrice: '999.00', description: '100% Organic Cotton.' },
+    { id: 'discount-fig-001', image: 'https://picsum.photos/seed/discount-fig-001/150/150', title: 'Meditating Frog', price: '1500.00', discountPrice: '1299.00', description: 'Peaceful resin frog.' },
+    { id: 'discount-paint-001', image: 'https://picsum.photos/seed/discount-paint-001/150/150', title: 'Leaf Study', price: '4500.00', discountPrice: '3999.00', description: 'Detailed acrylic leaf.' }
 ];
 
 // Constants
 const SCROLL_INTERVAL = 5000;
-// ** UPDATED CONSTANT **
-const ITEM_SCROLL_WIDTH = 214; // New Width (198px) + Gap (1rem = 16px)
+const ITEM_SCROLL_WIDTH = 214; // Width (198px) + Gap (1rem = 16px)
 
 const Sidebar = () => {
     const [email, setEmail] = useState('');
