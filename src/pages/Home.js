@@ -1,10 +1,11 @@
 // src/pages/Home.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaGithub, FaLinkedin, FaPhoneAlt } from "react-icons/fa";
+import { FaPhoneAlt } from "react-icons/fa";
+import { CiFacebook } from "react-icons/ci";
+import { FaInstagram } from "react-icons/fa";
 import { MdAlternateEmail } from "react-icons/md";
 import './Home.css';
-import { LinkedIn } from '@mui/icons-material';
 
 const Home = () => {
   const categories = [
@@ -95,16 +96,16 @@ const Home = () => {
       <section className="contact-footer">
         <h2 className="footer-heading">Contact Us</h2>
         <div className="footer-icons">
-          <a href="tel:+19132088818" aria-label="Phone">
+          <a href="tel:+1234567890" aria-label="Phone">
             <FaPhoneAlt className="footer-icon" />
           </a>
-          <a href="https://www.linkedin.com/in/joseph-meghanath-9880ba149/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <FaLinkedin className="footer-icon" />
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <CiFacebook className="footer-icon" />
           </a>
-          <a href="https://github.com/JoeHitHardcom" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <FaGithub className="footer-icon" />
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <FaInstagram className="footer-icon" />
           </a>
-          <a href="mailto:josephmeghanath@gmail.com" aria-label="Email">
+          <a href="mailto:info@flyfish.com" aria-label="Email">
             <MdAlternateEmail className="footer-icon" />
           </a>
         </div>
