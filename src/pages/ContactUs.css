@@ -1,0 +1,91 @@
+.contact-content {
+  /* Layout for story and details */
+  display: flex;
+  flex-direction: column; /* Stack story and details by default */
+  gap: 2.5rem; /* Space between story and contact details */
+  padding: 1rem 0; /* Add some vertical padding */
+}
+
+/* Can use flexbox for side-by-side on larger screens if desired */
+/* @media (min-width: 992px) {
+  .contact-content {
+    flex-direction: row;
+    gap: 3rem;
+  }
+  .story-section {
+    flex-basis: 60%;
+  }
+  .contact-details-section {
+    flex-basis: 40%;
+  }
+} */
+
+.story-section p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-color-secondary, #555);
+  margin-bottom: 1em; /* Space between paragraphs */
+}
+
+.story-section p:last-child {
+  margin-bottom: 0;
+}
+
+.contact-details-section {
+  border-top: 1px solid var(--card-border-color, #e9e9e9);
+  padding-top: 2rem;
+}
+
+.contact-details-section h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color-primary, #222);
+  margin-bottom: 1rem;
+}
+
+.contact-details-section p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-color-secondary, #555);
+  margin-bottom: 1rem;
+}
+
+.contact-info {
+  background-color: #f9f9f9;
+  padding: 1rem 1.5rem;
+  border-radius: var(--card-border-radius, 8px);
+  margin-bottom: 1rem;
+  border-left: 4px solid var(--button-primary-bg, #ff7700);
+}
+
+.contact-info p {
+  margin-bottom: 0.5rem; /* Reduce space inside the info box */
+  font-size: 1.05rem; /* Slightly larger text for details */
+}
+.contact-info p:last-child {
+  margin-bottom: 0;
+}
+
+
+.contact-name strong {
+  font-weight: 600;
+  color: var(--text-color-primary, #222);
+}
+
+.contact-email a {
+  color: var(--button-primary-bg, #ff7700);
+  text-decoration: none;
+  font-weight: 500;
+  word-break: break-all; /* Prevent long email from breaking layout */
+}
+
+.contact-email a:hover {
+  text-decoration: underline;
+  color: var(--button-primary-bg-hover, #e66900);
+}
+
+.contact-note {
+    font-size: 0.9rem;
+    color: var(--text-color-muted, #888);
+    font-style: italic;
+}

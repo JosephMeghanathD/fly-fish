@@ -1,21 +1,21 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
 
+/* Base application styling */
 .App {
   font-family: "Titillium Web", sans-serif;
   font-weight: 400;
   font-style: normal;
+  /* background-color: #f8f9fa; Optional: Set a base background for the whole app */
+  min-height: 100vh; /* Ensure app takes full height */
 }
 
+/* Default Create React App Styles (keep unless unused) */
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
-/* @media (min-width: 768px) {
-  .topbar {
-      display: none;
-  }
-} */
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -45,3 +45,56 @@
     transform: rotate(360deg);
   }
 }
+
+/* --- FlyFish Specific Global Styles --- */
+
+/* Main Content Area Layout */
+/* This handles the space next to the desktop sidebar */
+.content-area {
+  margin-left: 220px; /* Must match sidebar width from NavBar.css */
+  padding: 1.5rem; /* Add consistent padding around page content */
+  min-height: 100vh; /* Ensure it stretches vertically */
+  box-sizing: border-box; /* Include padding in width calculation */
+  background-color: #fff; /* White background for content area */
+  /* transition: margin-left 0.3s ease; Optional: Smooth transition if sidebar width changes */
+}
+
+/* Responsive adjustments for Content Area */
+@media (max-width: 768px) {
+  .content-area {
+    margin-left: 0; /* Remove left margin when sidebar is not fixed vertically */
+    padding: 1rem; /* Adjust padding for mobile */
+    /* No top margin/padding needed here anymore for the topbar */
+    /* But ensure there's enough space if footer exists */
+    padding-bottom: 3rem; /* Example bottom padding */
+  }
+}
+
+/* Optional: Global body reset */
+/*
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f8f9fa;
+}
+*/
+
+/* Optional: Ensure html and body take full height */
+/*
+html, body {
+  height: 100%;
+}
+*/
+
+/* Optional: Global link styling */
+/*
+a {
+  color: var(--button-primary-bg, #ff7700);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+*/

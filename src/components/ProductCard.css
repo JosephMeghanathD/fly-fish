@@ -1,68 +1,223 @@
+:root {
+  /* Define CSS Variables for easier theme management */
+  --card-bg: #ffffff;
+  --card-border-color: #e9e9e9;
+  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  --card-hover-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  --card-border-radius: 10px;
+  --card-padding: 1rem;
+  --card-fixed-width: 300px; /* Define fixed width here */
+
+  --image-bg: #f5f5f5;
+  --image-aspect-ratio: 1 / 1; /* Or 4 / 3, adjust as needed */
+
+  --text-color-primary: #222222;
+  --text-color-secondary: #555555;
+  --text-color-muted: #888888;
+
+  --price-color: #111111;
+  --price-discount-color: #d9534f; /* A subtle red for discount */
+  --price-original-color: var(--text-color-muted);
+
+  --button-primary-bg: #ff7700;
+  --button-primary-bg-hover: #e66900;
+  --button-text-color: #ffffff;
+  --button-border-radius: 6px;
+  --button-padding: 0.6rem 1rem;
+  --button-font-size: 0.9rem;
+
+  --transition-speed: 0.3s;
+}
+
 .product-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    width: 300px;
-    margin: 16px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .product-image {
-    width: 100%;
-    height: auto;
-  }
-  
-  .product-info {
-    padding: 16px;
-  }
-  
-  .product-description {
-    font-size: 14px;
-    color: #333;
-    margin-bottom: 8px;
-  }
-  
-  .product-price {
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .original-price {
-    text-decoration: line-through;
-    color: #999;
-    margin-right: 8px;
-  }
-  
-  .discount-price {
-    color: #e63946;
-  }
-  
-  .add-to-cart-button {
-    background-color: #ff7700;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  
-  .cart-controls {
-    display: flex;
-    align-items: center;
-  }
-  
-  .decrement-button,
-  .increment-button {
-    background-color: #ff7700;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  
-  .count {
-    margin: 0 10px;
-    font-size: 16px;
-  }
-  
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: box-shadow var(--transition-speed) ease, transform var(--transition-speed) ease;
+  width: var(--card-fixed-width); /* Apply the fixed width */
+  /* Keep height determined by content or set explicitly if needed,
+     removing height: 100% unless specifically required by grid layout */
+  /* height: 100%; -- Removed for now, let content dictate height with fixed width */
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--card-hover-shadow);
+}
+
+.product-image-wrapper {
+  background-color: var(--image-bg);
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--image-aspect-ratio);
+  overflow: hidden; /* Ensure image stays within bounds */
+}
+
+.product-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Scale image nicely */
+  transition: transform var(--transition-speed) ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.03); /* Subtle zoom on hover */
+}
+
+.product-content {
+  padding: var(--card-padding);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Allows content to fill space, pushing footer down */
+  gap: 0.8rem; /* Spacing between content sections */
+}
+
+.product-details {
+  flex-grow: 1; /* Takes up available space */
+}
+
+.product-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-color-primary);
+  margin: 0 0 0.4rem 0; /* Bottom margin */
+  line-height: 1.3;
+}
+
+.product-description {
+  font-size: 0.875rem;
+  color: var(--text-color-secondary);
+  line-height: 1.5;
+  margin: 0 0 0.5rem 0;
+  /* Limit lines for consistency (optional) */
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Show max 2 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: calc(1.5 * 0.875rem * 2); /* Reserve space for 2 lines */
+}
+
+.product-creator {
+  font-size: 0.8rem;
+  color: var(--text-color-muted);
+  margin: 0;
+  font-style: italic;
+}
+
+/* Footer contains price and actions */
+.product-footer {
+  margin-top: auto; /* Pushes footer to the bottom */
+  padding-top: 0.8rem; /* Space above the footer content */
+  border-top: 1px solid var(--card-border-color); /* Subtle separator */
+}
+
+.product-pricing {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem; /* Space between price and actions */
+  flex-wrap: wrap; /* Allow wrapping if space is tight */
+}
+
+.current-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--price-color);
+}
+
+.product-pricing .original-price { /* Target original price specifically within pricing */
+  font-size: 0.9rem;
+  color: var(--price-original-color);
+  text-decoration: line-through;
+}
+
+/* If there's a discount, style the main price differently */
+.product-pricing .current-price:has(+ .original-price) {
+  color: var(--price-discount-color); /* Use discount color only when original exists */
+}
+
+.product-actions {
+  width: 100%;
+}
+
+/* Base button styles */
+.product-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  background-color: var(--button-primary-bg);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: var(--button-border-radius);
+  padding: var(--button-padding);
+  font-size: var(--button-font-size);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color var(--transition-speed) ease, transform 0.1s ease;
+  text-align: center;
+  width: 100%; /* Default to full width */
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.product-button:hover:not(:disabled) {
+  background-color: var(--button-primary-bg-hover);
+}
+
+.product-button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.product-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Focus styles for accessibility */
+.product-button:focus-visible {
+  outline: 2px solid var(--button-primary-bg);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(255, 119, 0, 0.3);
+}
+
+/* Add to cart specific icon size adjustment */
+.add-to-cart-button svg {
+  font-size: 1.1em; /* Slightly larger cart icon */
+}
+
+/* Quantity Controls */
+.cart-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Distribute controls evenly */
+  width: 100%;
+}
+
+.control-button {
+  width: auto; /* Allow buttons to shrink */
+  padding: 0.5rem; /* Smaller padding for controls */
+  flex-basis: 40px; /* Give buttons a base size */
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.control-button svg {
+  font-size: 0.9em; /* Make +/- icons slightly smaller */
+}
+
+.quantity-display {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-color-primary);
+  padding: 0 0.5rem;
+  min-width: 30px; /* Ensure space for number */
+  text-align: center;
+  flex-grow: 1; /* Take up remaining space */
+}

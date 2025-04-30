@@ -1,38 +1,80 @@
+/* Navbar container - Minimal styling, just a placeholder */
 .navbar {
-    background-color: transparent !important;
-    top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fff;
-    padding: 1rem;
-    position: sticky !important;
-  }
-  
-  .navbar-brand {
-    color: #fff;
-    font-size: 1.5rem;
-    letter-spacing: 2px;
-  }
-  
+  /* Remove positioning and layout styles that affect flow */
+  /* position: sticky; -- Removed */
+  /* display: flex; -- Removed */
+  /* padding: 0.8rem 1.5rem; -- Removed */
+  height: 0; /* Ensure it takes no vertical space */
+  overflow: visible; /* Allow fixed children to be visible */
+
+  /* Make the container itself non-interactive and invisible */
+  pointer-events: none;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+/* Hide the brand */
+.navbar-brand {
+  display: none;
+}
+
+/* Navbar Links container - Positioned Fixed */
+.navbar-links {
+  /* Fixed Positioning */
+  position: fixed;
+  top: 1rem;   /* Adjust distance from top */
+  right: 1.5rem; /* Adjust distance from right */
+  z-index: 1000; /* Ensure it's above other content */
+
+  /* Layout for items inside the ul (if more than one) */
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem; /* Space if you add more fixed buttons */
+  margin: 0;
+  padding: 0;
+
+  /* Enable interaction */
+  pointer-events: auto;
+}
+
+.navbar-links li {
+  display: inline;
+}
+
+/* Specific styling for checkout link - Remains largely the same */
+.checkout-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: var(--button-primary-bg, #ff7700);
+  color: var(--button-text-color, white);
+  padding: 0.5rem 1rem;
+  border-radius: var(--button-border-radius, 6px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+  text-decoration: none; /* Ensure no underline from Link */
+}
+
+.checkout-link:hover {
+  background-color: var(--button-primary-bg-hover, #e66900);
+  color: var(--button-text-color, white);
+  transform: scale(1.03);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.checkout-link svg {
+  font-size: 1.2em;
+}
+
+/* Responsive adjustments - Adjust fixed positioning */
+@media (max-width: 768px) {
   .navbar-links {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
+    top: 0.6rem;   /* Closer to top on mobile */
+    right: 1rem;  /* Closer to edge on mobile */
   }
-  
-  .navbar-links li {
-    display: inline;
+  .checkout-link {
+    padding: 0.4rem 0.8rem;
   }
-  
-  .navbar-links a {
-    color: #111;
-    text-decoration: none;
-    font-size: 1rem;
-  }
-  
-  .navbar-links a:hover {
-    color: #ddd;
-  }
-  
+}
