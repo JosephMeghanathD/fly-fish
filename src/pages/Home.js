@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaPhoneAlt } from "react-icons/fa";
 import { MdAlternateEmail } from "react-icons/md";
 import './Home.css';
+import { LinkedIn } from '@mui/icons-material';
+
 const Home = () => {
   const categories = [
     {
