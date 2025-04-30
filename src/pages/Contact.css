@@ -1,0 +1,241 @@
+/* Contact.css */
+.contact-container {
+    font-family: 'Titillium Web', sans-serif;
+    color: #2c3e50;
+  }
+  
+  .contact-hero {
+    background-size: cover !important;
+    background-position: center !important;
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  
+  .profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #ff7700;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .main-heading-contact {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+  }
+  
+  .sub-heading-contact {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 2rem;
+  }
+  
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .social-icon {
+    color: #2c3e50;
+    font-size: 1.8rem;
+    transition: all 0.3s ease;
+  }
+  
+  .social-icon:hover {
+    color: #ff7700;
+    transform: translateY(-3px);
+  }
+  
+  .content-section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.8rem;
+    margin-bottom: 3rem;
+    color: #2c3e50;
+  }
+  
+  .section-icon {
+    color: #ff7700;
+    font-size: 2rem;
+  }
+  
+  .experience-grid {
+    display: grid;
+    gap: 2rem;
+  }
+  
+  .experience-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+  }
+  
+  .experience-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .company-name {
+    color: #ff7700;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .role-duration {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .achievement-list {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .achievement-item {
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+    position: relative;
+  }
+  
+  .achievement-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 8px;
+    height: 8px;
+    background: #ff7700;
+    border-radius: 50%;
+  }
+  
+  .two-column-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  
+  .education-card,
+  .skills-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  .institution-name {
+    color: #ff7700;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .degree-info {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  
+  .duration-gpa {
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  .skill-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+  
+  .skill-badge {
+    background: rgba(255, 119, 0, 0.1);
+    color: #ff7700;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255, 119, 0, 0.2);
+  }
+  
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .project-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+  }
+  
+  .project-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .project-header {
+    margin-bottom: 1rem;
+  }
+  
+  .tech-badges {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+  }
+  
+  .tech-badge {
+    background: rgba(255, 119, 0, 0.1);
+    color: #ff7700;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+  }
+  
+  .project-link {
+    color: #ff7700;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    .content-section {
+      padding: 2rem 1rem;
+    }
+  
+    .two-column-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .main-heading {
+      font-size: 2rem;
+    }
+  
+    .section-title {
+      font-size: 1.5rem;
+    }
+  
+    .experience-card,
+    .education-card,
+    .skills-card {
+      padding: 1.5rem;
+    }
+  }

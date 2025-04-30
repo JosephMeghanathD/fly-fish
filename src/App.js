@@ -7,6 +7,7 @@ import Figures from './pages/Figures';
 import Interior from './pages/Interior';
 import Paintings from './pages/Paintings';
 import Terrariums from './pages/Terrariums';
+import Contact from './pages/Contact';
 import './App.css'
 import Main from './components/Main';
 
@@ -25,6 +26,7 @@ const App = () => {
             <Route path="/interior" element={<Main Component={Interior}/>} />
             <Route path="/paintings" element={<Main Component={Paintings}/>} />
             <Route path="/terrariums" element={<Main Component={Terrariums}/>} />
+            <Route path="/contact" element={<Main Component={Contact}/>} />
           </Routes>
         </div>
       </div>
